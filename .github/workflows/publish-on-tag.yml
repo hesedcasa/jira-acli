@@ -21,12 +21,12 @@ jobs:
     if: ${{ (github.event_name != 'workflow_dispatch') || (inputs.npm-publish && always()) }}
     steps:
       - name: Check out repository
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        uses: actions/checkout@v5
         with:
           fetch-depth: 2
 
       - name: Set up Node.js
-        uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # v6.0.0
+        uses: actions/setup-node@v6
         with:
           cache: npm
           node-version-file: '.nvmrc'
@@ -41,7 +41,22 @@ jobs:
       - name: Build
         run: npm run build
 
+      - run: npm run prepack
+
       - name: Publish
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
+      - run: npm run postpack
+
+      - name: Extract version
+        id: version
+        run: |
+          package_version=$(node -p "require('./package.json').version")
+          echo "tag=v$package_version" >> $GITHUB_OUTPUT
+
+      - name: Create Release Branch
+        run: |
+          git branch ${{ steps.version.outputs.tag }} $GITHUB_SHA
+          git push origin ${{ steps.version.outputs.tag }}

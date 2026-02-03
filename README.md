@@ -20,7 +20,7 @@ $ npm install -g jira-acli
 $ jira-acli COMMAND
 running command...
 $ jira-acli (--version)
-jira-acli/0.0.0 darwin-arm64 node-v22.14.0
+jira-acli/0.1.0 darwin-arm64 node-v22.14.0
 $ jira-acli --help [COMMAND]
 USAGE
   $ jira-acli COMMAND
@@ -86,7 +86,7 @@ EXAMPLES
   $ jira-acli auth add
 ```
 
-_See code: [src/commands/auth/add.ts](https://github.com/hesed/jira-acli/blob/v0.0.0/src/commands/auth/add.ts)_
+_See code: [src/commands/auth/add.ts](https://github.com/hesed/jira-acli/blob/v0.1.0/src/commands/auth/add.ts)_
 
 ## `jira-acli auth update`
 
@@ -111,7 +111,7 @@ EXAMPLES
   $ jira-acli auth update
 ```
 
-_See code: [src/commands/auth/update.ts](https://github.com/hesed/jira-acli/blob/v0.0.0/src/commands/auth/update.ts)_
+_See code: [src/commands/auth/update.ts](https://github.com/hesed/jira-acli/blob/v0.1.0/src/commands/auth/update.ts)_
 
 ## `jira-acli board backlogs BOARDID [JQL]`
 
@@ -142,7 +142,7 @@ EXAMPLES
   $ jira-acli board backlogs 123 'timeestimate > 4h' --fields comment,creator,timeestimate
 ```
 
-_See code: [src/commands/board/backlogs.ts](https://github.com/hesed/jira-acli/blob/v0.0.0/src/commands/board/backlogs.ts)_
+_See code: [src/commands/board/backlogs.ts](https://github.com/hesed/jira-acli/blob/v0.1.0/src/commands/board/backlogs.ts)_
 
 ## `jira-acli board list [PROJECTID]`
 
@@ -169,7 +169,7 @@ EXAMPLES
   $ jira-acli board list PROJ
 ```
 
-_See code: [src/commands/board/list.ts](https://github.com/hesed/jira-acli/blob/v0.0.0/src/commands/board/list.ts)_
+_See code: [src/commands/board/list.ts](https://github.com/hesed/jira-acli/blob/v0.1.0/src/commands/board/list.ts)_
 
 ## `jira-acli board sprint-issues BOARDID SPRINTID [JQL]`
 
@@ -201,7 +201,7 @@ EXAMPLES
   $ jira-acli board sprint-issues 123 3068 'timeestimate > 4h' --fields comment,creator,timeestimate
 ```
 
-_See code: [src/commands/board/sprint-issues.ts](https://github.com/hesed/jira-acli/blob/v0.0.0/src/commands/board/sprint-issues.ts)_
+_See code: [src/commands/board/sprint-issues.ts](https://github.com/hesed/jira-acli/blob/v0.1.0/src/commands/board/sprint-issues.ts)_
 
 ## `jira-acli board sprints BOARDID`
 
@@ -229,7 +229,7 @@ EXAMPLES
   $ jira-acli board sprints 123 --state active
 ```
 
-_See code: [src/commands/board/sprints.ts](https://github.com/hesed/jira-acli/blob/v0.0.0/src/commands/board/sprints.ts)_
+_See code: [src/commands/board/sprints.ts](https://github.com/hesed/jira-acli/blob/v0.1.0/src/commands/board/sprints.ts)_
 
 ## `jira-acli board versions BOARDID`
 
@@ -257,7 +257,7 @@ EXAMPLES
   $ jira-acli board versions 123 --released false
 ```
 
-_See code: [src/commands/board/versions.ts](https://github.com/hesed/jira-acli/blob/v0.0.0/src/commands/board/versions.ts)_
+_See code: [src/commands/board/versions.ts](https://github.com/hesed/jira-acli/blob/v0.1.0/src/commands/board/versions.ts)_
 
 ## `jira-acli commands`
 
@@ -339,7 +339,7 @@ EXAMPLES
   $ jira-acli issue add-comment "$(cat content.md)" PROJ-123
 ```
 
-_See code: [src/commands/issue/add-comment.ts](https://github.com/hesed/jira-acli/blob/v0.0.0/src/commands/issue/add-comment.ts)_
+_See code: [src/commands/issue/add-comment.ts](https://github.com/hesed/jira-acli/blob/v0.1.0/src/commands/issue/add-comment.ts)_
 
 ## `jira-acli issue assign ACCOUNTID ISSUEID`
 
@@ -360,7 +360,7 @@ EXAMPLES
   $ jira-acli issue assign 5b10ac8d82e05b22cc7d4ef5 PROJ-123
 ```
 
-_See code: [src/commands/issue/assign.ts](https://github.com/hesed/jira-acli/blob/v0.0.0/src/commands/issue/assign.ts)_
+_See code: [src/commands/issue/assign.ts](https://github.com/hesed/jira-acli/blob/v0.1.0/src/commands/issue/assign.ts)_
 
 ## `jira-acli issue attachment [FILE]`
 
@@ -384,7 +384,7 @@ EXAMPLES
   $ jira-acli issue attachment
 ```
 
-_See code: [src/commands/issue/attachment.ts](https://github.com/hesed/jira-acli/blob/v0.0.0/src/commands/issue/attachment.ts)_
+_See code: [src/commands/issue/attachment.ts](https://github.com/hesed/jira-acli/blob/v0.1.0/src/commands/issue/attachment.ts)_
 
 ## `jira-acli issue create`
 
@@ -419,7 +419,7 @@ FLAG DESCRIPTIONS
     Minimum fields required: project, summary, description & issuetype
 ```
 
-_See code: [src/commands/issue/create.ts](https://github.com/hesed/jira-acli/blob/v0.0.0/src/commands/issue/create.ts)_
+_See code: [src/commands/issue/create.ts](https://github.com/hesed/jira-acli/blob/v0.1.0/src/commands/issue/create.ts)_
 
 ## `jira-acli issue delete ISSUEID`
 
@@ -439,7 +439,7 @@ EXAMPLES
   $ jira-acli issue delete
 ```
 
-_See code: [src/commands/issue/delete.ts](https://github.com/hesed/jira-acli/blob/v0.0.0/src/commands/issue/delete.ts)_
+_See code: [src/commands/issue/delete.ts](https://github.com/hesed/jira-acli/blob/v0.1.0/src/commands/issue/delete.ts)_
 
 ## `jira-acli issue delete-comment ID ISSUEID`
 
@@ -460,7 +460,7 @@ EXAMPLES
   $ jira-acli issue delete-comment 123 PROJ-123
 ```
 
-_See code: [src/commands/issue/delete-comment.ts](https://github.com/hesed/jira-acli/blob/v0.0.0/src/commands/issue/delete-comment.ts)_
+_See code: [src/commands/issue/delete-comment.ts](https://github.com/hesed/jira-acli/blob/v0.1.0/src/commands/issue/delete-comment.ts)_
 
 ## `jira-acli issue delete-worklog ID ISSUEID`
 
@@ -481,7 +481,7 @@ EXAMPLES
   $ jira-acli issue delete-worklog 123 PROJ-123
 ```
 
-_See code: [src/commands/issue/delete-worklog.ts](https://github.com/hesed/jira-acli/blob/v0.0.0/src/commands/issue/delete-worklog.ts)_
+_See code: [src/commands/issue/delete-worklog.ts](https://github.com/hesed/jira-acli/blob/v0.1.0/src/commands/issue/delete-worklog.ts)_
 
 ## `jira-acli issue download-attachment ATTACHMENTID ISSUEID [OUTPUTPATH]`
 
@@ -508,7 +508,7 @@ EXAMPLES
   $ jira-acli issue download-attachment 123 PROJ-123 ~/Desktop/test.jpg
 ```
 
-_See code: [src/commands/issue/download-attachment.ts](https://github.com/hesed/jira-acli/blob/v0.0.0/src/commands/issue/download-attachment.ts)_
+_See code: [src/commands/issue/download-attachment.ts](https://github.com/hesed/jira-acli/blob/v0.1.0/src/commands/issue/download-attachment.ts)_
 
 ## `jira-acli issue get ISSUEID`
 
@@ -531,7 +531,7 @@ EXAMPLES
   $ jira-acli issue get PROJ-123
 ```
 
-_See code: [src/commands/issue/get.ts](https://github.com/hesed/jira-acli/blob/v0.0.0/src/commands/issue/get.ts)_
+_See code: [src/commands/issue/get.ts](https://github.com/hesed/jira-acli/blob/v0.1.0/src/commands/issue/get.ts)_
 
 ## `jira-acli issue get-transitions ISSUEID`
 
@@ -554,7 +554,7 @@ EXAMPLES
   $ jira-acli issue get-transitions PROJ-123
 ```
 
-_See code: [src/commands/issue/get-transitions.ts](https://github.com/hesed/jira-acli/blob/v0.0.0/src/commands/issue/get-transitions.ts)_
+_See code: [src/commands/issue/get-transitions.ts](https://github.com/hesed/jira-acli/blob/v0.1.0/src/commands/issue/get-transitions.ts)_
 
 ## `jira-acli issue get-worklogs ISSUEID`
 
@@ -579,7 +579,7 @@ EXAMPLES
   $ jira-acli issue get-worklogs PROJ-123
 ```
 
-_See code: [src/commands/issue/get-worklogs.ts](https://github.com/hesed/jira-acli/blob/v0.0.0/src/commands/issue/get-worklogs.ts)_
+_See code: [src/commands/issue/get-worklogs.ts](https://github.com/hesed/jira-acli/blob/v0.1.0/src/commands/issue/get-worklogs.ts)_
 
 ## `jira-acli issue search JQL`
 
@@ -609,7 +609,7 @@ EXAMPLES
   $ jira-acli issue search 'timeestimate > 4h' --fields comment,creator,timeestimate
 ```
 
-_See code: [src/commands/issue/search.ts](https://github.com/hesed/jira-acli/blob/v0.0.0/src/commands/issue/search.ts)_
+_See code: [src/commands/issue/search.ts](https://github.com/hesed/jira-acli/blob/v0.1.0/src/commands/issue/search.ts)_
 
 ## `jira-acli issue transition ISSUEID TRANSITIONID`
 
@@ -630,7 +630,7 @@ EXAMPLES
   $ jira-acli issue transition PROJ-123 123
 ```
 
-_See code: [src/commands/issue/transition.ts](https://github.com/hesed/jira-acli/blob/v0.0.0/src/commands/issue/transition.ts)_
+_See code: [src/commands/issue/transition.ts](https://github.com/hesed/jira-acli/blob/v0.1.0/src/commands/issue/transition.ts)_
 
 ## `jira-acli issue update ISSUEID`
 
@@ -666,7 +666,7 @@ EXAMPLES
   $ jira-acli issue update PROJ-123 --fields timetracking='{"originalEstimate": "5h"}'
 ```
 
-_See code: [src/commands/issue/update.ts](https://github.com/hesed/jira-acli/blob/v0.0.0/src/commands/issue/update.ts)_
+_See code: [src/commands/issue/update.ts](https://github.com/hesed/jira-acli/blob/v0.1.0/src/commands/issue/update.ts)_
 
 ## `jira-acli issue update-comment BODY ID ISSUEID`
 
@@ -700,7 +700,7 @@ EXAMPLES
   $ jira-acli issue update-comment "$(cat content.md)" 123 PROJ-123
 ```
 
-_See code: [src/commands/issue/update-comment.ts](https://github.com/hesed/jira-acli/blob/v0.0.0/src/commands/issue/update-comment.ts)_
+_See code: [src/commands/issue/update-comment.ts](https://github.com/hesed/jira-acli/blob/v0.1.0/src/commands/issue/update-comment.ts)_
 
 ## `jira-acli issue worklog ISSUEID STARTED TIMESPENT [COMMENT]`
 
@@ -732,7 +732,7 @@ EXAMPLES
   $ jira-acli issue worklog PROJ-123 $(date +"%Y-%m-%dT08:30:00.000%z") 6h
 ```
 
-_See code: [src/commands/issue/worklog.ts](https://github.com/hesed/jira-acli/blob/v0.0.0/src/commands/issue/worklog.ts)_
+_See code: [src/commands/issue/worklog.ts](https://github.com/hesed/jira-acli/blob/v0.1.0/src/commands/issue/worklog.ts)_
 
 ## `jira-acli project get PROJECTID`
 
@@ -755,7 +755,7 @@ EXAMPLES
   $ jira-acli project get
 ```
 
-_See code: [src/commands/project/get.ts](https://github.com/hesed/jira-acli/blob/v0.0.0/src/commands/project/get.ts)_
+_See code: [src/commands/project/get.ts](https://github.com/hesed/jira-acli/blob/v0.1.0/src/commands/project/get.ts)_
 
 ## `jira-acli project list`
 
@@ -775,7 +775,7 @@ EXAMPLES
   $ jira-acli project list
 ```
 
-_See code: [src/commands/project/list.ts](https://github.com/hesed/jira-acli/blob/v0.0.0/src/commands/project/list.ts)_
+_See code: [src/commands/project/list.ts](https://github.com/hesed/jira-acli/blob/v0.1.0/src/commands/project/list.ts)_
 
 ## `jira-acli update [CHANNEL]`
 
@@ -843,7 +843,7 @@ EXAMPLES
   $ jira-acli user get -q john@email.com
 ```
 
-_See code: [src/commands/user/get.ts](https://github.com/hesed/jira-acli/blob/v0.0.0/src/commands/user/get.ts)_
+_See code: [src/commands/user/get.ts](https://github.com/hesed/jira-acli/blob/v0.1.0/src/commands/user/get.ts)_
 
 ## `jira-acli user list-assignable ISSUEID`
 
@@ -869,7 +869,7 @@ EXAMPLES
   $ jira-acli user list-assignable PROJ-123 -q john
 ```
 
-_See code: [src/commands/user/list-assignable.ts](https://github.com/hesed/jira-acli/blob/v0.0.0/src/commands/user/list-assignable.ts)_
+_See code: [src/commands/user/list-assignable.ts](https://github.com/hesed/jira-acli/blob/v0.1.0/src/commands/user/list-assignable.ts)_
 
 ## `jira-acli version`
 
