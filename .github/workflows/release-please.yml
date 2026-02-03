@@ -14,6 +14,16 @@ jobs:
   release-please:
     runs-on: ubuntu-latest
     steps:
+      - name: Generate oclif README
+        id: oclif-readme
+        run: |
+          npm install
+          npm exec oclif readme
+          if [ -n "$(git status --porcelain)" ]; then
+            git add .
+            git commit -am "chore: update README.md"
+            git push -u origin ${{ github.ref_name }}
+          fi
       - uses: googleapis/release-please-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
