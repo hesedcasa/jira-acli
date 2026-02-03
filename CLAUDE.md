@@ -47,12 +47,14 @@ src/
 ### Key Architectural Patterns
 
 **1. Three-Tier Command Pattern:**
+
 - **Commands** (`src/commands/`) - Thin Oclif command wrappers that parse args/flags
 - **Client Layer** (`*-client.ts`) - Functional wrappers with singleton pattern
 - **API Layer** (`*-api.ts`) - Core API classes using `jira.js` library
 
 **2. ApiResult Pattern:**
 All API functions return `ApiResult<T>` objects:
+
 ```typescript
 interface ApiResult {
   data?: unknown
@@ -80,6 +82,7 @@ The project uses `marklassian` to convert Markdown to Jira's Atlassian Document 
    - Output with `this.logJson(result)` or `this.log(formatAsToon(result))`
 
 Example pattern from `src/commands/issue/get.ts`:
+
 ```typescript
 import {Args, Command, Flags} from '@oclif/core'
 import {readConfig} from '../../config.js'
@@ -122,6 +125,7 @@ export default class IssueGet extends Command {
 ## Configuration
 
 Authentication config is stored in JSON at `~/.config/jira-acli/config.json` (platform-dependent):
+
 ```json
 {
   "auth": {
@@ -161,3 +165,25 @@ Authentication config is stored in JSON at `~/.config/jira-acli/config.json` (pl
 - Uses `shx` for cross-platform shell commands
 - Node.js >=18.0.0 required
 - Published as npm package `jira-acli`
+
+## Commit Message Convention
+
+**Always use Conventional Commits format** for all commit messages and PR titles:
+
+- `feat:` - New features or capabilities
+- `fix:` - Bug fixes
+- `docs:` - Documentation changes only
+- `refactor:` - Code refactoring without changing functionality
+- `test:` - Adding or modifying tests
+- `chore:` - Maintenance tasks, dependency updates, build configuration
+
+**Examples:**
+
+```
+feat: add list-boards command for agile boards
+fix: handle connection timeout errors gracefully
+docs: update configuration examples in README
+refactor: extract API formatting into separate module
+test: add integration tests for Jira operations
+chore: update jira.js to latest version
+```

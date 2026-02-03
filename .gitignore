@@ -13,3 +13,6 @@ yarn.lock
 pnpm-lock.yaml
 
 .claude
+*.tmp
+.cache/
+.eslintcache
