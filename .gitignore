@@ -16,3 +16,4 @@ pnpm-lock.yaml
 *.tmp
 .cache/
 .eslintcache
+*.tsbuildinfo
