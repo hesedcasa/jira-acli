@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.1.1](https://github.com/hesedcasa/jira-acli/compare/v0.1.0...v0.1.1) (2026-02-03)
+
+
+### 🛠️ Fixes
+
+* update secret names in release workflow ([#9](https://github.com/hesedcasa/jira-acli/issues/9)) ([dd900bb](https://github.com/hesedcasa/jira-acli/commit/dd900bbce39718f83f72db3cfa892c91aa595c26))
+
+
+### ♻️ Chores
+
+* release 0.1.0 ([69d3b66](https://github.com/hesedcasa/jira-acli/commit/69d3b6630875a92f867a4a198a82616888cef1b6))
+* release 0.1.1 ([50acdaf](https://github.com/hesedcasa/jira-acli/commit/50acdafe5e91b109d580a0ca9b94a335d2e5dc58))
+
 ## 0.1.0 (2026-02-03)
 
 
