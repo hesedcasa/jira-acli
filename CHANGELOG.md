@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0 (2026-02-03)
+
+
+### ♻️ Chores
+
+* release 0.1.0 ([69d3b66](https://github.com/hesedcasa/jira-acli/commit/69d3b6630875a92f867a4a198a82616888cef1b6))
+
+## Changelog
+
 ## Changelog
 
 All notable changes to this project will be documented in this file.
