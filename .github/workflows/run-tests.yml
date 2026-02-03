@@ -30,7 +30,7 @@ jobs:
           fetch-depth: 2
 
       - name: Set up Node.js
-        uses: actions/setup-node@
+        uses: actions/setup-node@v6
         with:
           cache: npm
           node-version-file: '.nvmrc' # build only works on this version.
