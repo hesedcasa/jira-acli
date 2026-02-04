@@ -14,7 +14,7 @@ export default class IssueDeleteWorklog extends Command {
 
   public async run(): Promise<void> {
     const {args} = await this.parse(IssueDeleteWorklog)
-    const config = await readConfig(this.config.configDir, this.log)
+    const config = await readConfig(this.config.configDir, this.log.bind(this))
     if (!config) {
       return
     }

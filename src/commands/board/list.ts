@@ -18,7 +18,7 @@ export default class BoardList extends Command {
 
   public async run(): Promise<void> {
     const {args, flags} = await this.parse(BoardList)
-    const config = await readConfig(this.config.configDir, this.log)
+    const config = await readConfig(this.config.configDir, this.log.bind(this))
     if (!config) {
       return
     }

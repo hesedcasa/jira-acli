@@ -23,7 +23,7 @@ export default class IssueCreate extends Command {
 
   public async run(): Promise<void> {
     const {flags} = await this.parse(IssueCreate)
-    const config = await readConfig(this.config.configDir, this.log)
+    const config = await readConfig(this.config.configDir, this.log.bind(this))
     if (!config) {
       return
     }

@@ -24,7 +24,7 @@ export default class BoardBacklogs extends Command {
 
   public async run(): Promise<void> {
     const {args, flags} = await this.parse(BoardBacklogs)
-    const config = await readConfig(this.config.configDir, this.log)
+    const config = await readConfig(this.config.configDir, this.log.bind(this))
     if (!config) {
       return
     }
