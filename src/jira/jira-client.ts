@@ -95,6 +95,17 @@ export async function updateIssue(
 }
 
 /**
+ * Add an attachment to an issue
+ * @param config - Jira configuration
+ * @param issueIdOrKey - Issue ID or key
+ * @param filePath - Path to the file to upload
+ */
+export async function addAttachment(config: Config, issueIdOrKey: string, filePath: string): Promise<ApiResult> {
+  const jira = await initJira(config)
+  return jira.addAttachment(issueIdOrKey, filePath)
+}
+
+/**
  * Add a comment to an issue
  * @param config - Jira configuration
  * @param issueIdOrKey - Issue ID or key
