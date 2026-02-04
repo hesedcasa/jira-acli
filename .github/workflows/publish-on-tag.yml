@@ -49,14 +49,3 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
       - run: npm run postpack
-
-      - name: Extract version
-        id: version
-        run: |
-          package_version=$(node -p "require('./package.json').version")
-          echo "tag=v$package_version" >> $GITHUB_OUTPUT
-
-      - name: Create Release Branch
-        run: |
-          git branch ${{ steps.version.outputs.tag }} $GITHUB_SHA
-          git push origin ${{ steps.version.outputs.tag }}
