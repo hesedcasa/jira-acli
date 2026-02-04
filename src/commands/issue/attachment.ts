@@ -52,16 +52,16 @@ export default class IssueAttachment extends Command {
     const result = await addAttachment(config.auth, args.issueKey, args.file)
     clearClients()
 
-    if (result.success) {
-      this.log(`✓ Successfully uploaded attachment to ${args.issueKey}`)
-    } else {
-      this.error(`Failed to upload attachment: ${result.error}`)
-    }
-
     if (flags.toon) {
       this.log(formatAsToon(result))
     } else {
       this.logJson(result)
+    }
+
+    if (result.success) {
+      this.log(`✓ Successfully uploaded attachment to ${args.issueKey}`)
+    } else {
+      this.error(`Failed to upload attachment: ${result.error}`)
     }
   }
 }
