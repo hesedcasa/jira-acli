@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/hesedcasa/jira-acli/compare/v0.1.1...v0.1.2) (2026-02-04)
+
+
+### 🛠️ Fixes
+
+* pass bound logger to readConfig in all commands ([#13](https://github.com/hesedcasa/jira-acli/issues/13)) ([6adea2b](https://github.com/hesedcasa/jira-acli/commit/6adea2b5f7ab1de30b33f19d0ea294adc788e89f))
+
 ## [0.1.1](https://github.com/hesedcasa/jira-acli/compare/v0.1.0...v0.1.1) (2026-02-03)
 
 
