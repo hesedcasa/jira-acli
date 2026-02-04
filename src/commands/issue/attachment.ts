@@ -32,13 +32,16 @@ export default class IssueAttachment extends Command {
       action.stop('✓ Successfully uploaded')
     } else {
       action.stop('✗ Upload failed')
-      this.error(`Failed to upload attachment: ${result.error}`)
     }
 
     if (flags.toon) {
       this.log(formatAsToon(result))
     } else {
       this.logJson(result)
+    }
+
+    if (!result.success) {
+      this.error(`Failed to upload attachment: ${result.error}`)
     }
   }
 }
