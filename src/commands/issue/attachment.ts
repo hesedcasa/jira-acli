@@ -8,7 +8,7 @@ import {addAttachment, clearClients} from '../../jira/jira-client.js'
 export default class IssueAttachment extends Command {
   static override args = {
     file: Args.string({description: 'Path to the file to upload', required: true}),
-    issueKey: Args.string({description: 'Issue ID or issue key', required: true}),
+    issueId: Args.string({description: 'Issue ID or issue key', required: true}),
   }
   static override description = 'Add an attachment to a Jira issue'
   static override examples = ['<%= config.bin %> <%= command.id %> ./document.pdf PROJ-123']
@@ -23,9 +23,9 @@ export default class IssueAttachment extends Command {
       return
     }
 
-    action.start(`Uploading attachment "${args.file}" to issue ${args.issueKey}`)
+    action.start(`Uploading attachment "${args.file}" to issue ${args.issueId}`)
 
-    const result = await addAttachment(config.auth, args.issueKey, args.file)
+    const result = await addAttachment(config.auth, args.issueId, args.file)
     clearClients()
 
     if (result.success) {
@@ -38,10 +38,6 @@ export default class IssueAttachment extends Command {
       this.log(formatAsToon(result))
     } else {
       this.logJson(result)
-    }
-
-    if (!result.success) {
-      this.error(`Failed to upload attachment: ${result.error}`)
     }
   }
 }

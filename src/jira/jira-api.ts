@@ -45,6 +45,16 @@ export class JiraApi {
         }
       }
 
+      // Check file size (10MB limit, typical for Jira Cloud)
+      const stats = fs.statSync(filePath)
+      const maxFileSizeBytes = 10 * 1024 * 1024 // 10MB
+      if (stats.size > maxFileSizeBytes) {
+        return {
+          error: `File size (${(stats.size / 1024 / 1024).toFixed(2)}MB) exceeds the 10MB limit`,
+          success: false,
+        }
+      }
+
       const client = this.getClient()
       const fileContent = fs.readFileSync(filePath)
       const fileName = path.basename(filePath)
