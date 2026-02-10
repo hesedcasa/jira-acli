@@ -33,6 +33,54 @@ export class JiraApi {
   }
 
   /**
+   * Add an attachment to an issue
+   */
+  async addAttachment(issueIdOrKey: string, filePath: string): Promise<ApiResult> {
+    try {
+      // Validate file exists
+      if (!fs.existsSync(filePath)) {
+        return {
+          error: `File not found: ${filePath}`,
+          success: false,
+        }
+      }
+
+      // Check file size (10MB limit, typical for Jira Cloud)
+      const stats = fs.statSync(filePath)
+      const maxFileSizeBytes = 10 * 1024 * 1024 // 10MB
+      if (stats.size > maxFileSizeBytes) {
+        return {
+          error: `File size (${(stats.size / 1024 / 1024).toFixed(2)}MB) exceeds the 10MB limit`,
+          success: false,
+        }
+      }
+
+      const client = this.getClient()
+      const fileContent = fs.readFileSync(filePath)
+      const fileName = path.basename(filePath)
+
+      const response = await client.issueAttachments.addAttachment({
+        attachment: {
+          file: fileContent,
+          filename: fileName,
+        },
+        issueIdOrKey,
+      })
+
+      return {
+        data: response,
+        success: true,
+      }
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : String(error)
+      return {
+        error: errorMessage,
+        success: false,
+      }
+    }
+  }
+
+  /**
    * Add a comment to an issue
    */
   async addComment(issueIdOrKey: string, body: string): Promise<ApiResult> {
