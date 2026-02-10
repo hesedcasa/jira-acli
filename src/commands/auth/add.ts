@@ -4,8 +4,8 @@ import {action} from '@oclif/core/ux'
 import {default as fs} from 'fs-extra'
 import {default as path} from 'node:path'
 
-import {ApiResult} from '../../jira/jira-api.js'
-import {clearClients, testConnection} from '../../jira/jira-client.js'
+import {ApiResult} from '../../bitbucket/bitbucket-api.js'
+import {clearClients, testConnection} from '../../bitbucket/bitbucket-client.js'
 
 export default class AuthAdd extends Command {
   static override args = {}
@@ -14,10 +14,10 @@ export default class AuthAdd extends Command {
   static override examples = ['<%= config.bin %> <%= command.id %>']
   static override flags = {
     email: Flags.string({char: 'e', description: 'Account email:', required: !process.stdout.isTTY}),
-    token: Flags.string({char: 't', description: 'API Token:', required: !process.stdout.isTTY}),
+    token: Flags.string({char: 't', description: 'App Password:', required: !process.stdout.isTTY}),
     url: Flags.string({
       char: 'u',
-      description: 'Atlassian URL (start with https://):',
+      description: 'Bitbucket URL (start with https://):',
       required: !process.stdout.isTTY,
     }),
   }
@@ -25,9 +25,9 @@ export default class AuthAdd extends Command {
   public async run(): Promise<ApiResult> {
     const {flags} = await this.parse(AuthAdd)
 
-    const apiToken = flags.token ?? (await input({message: 'API Token:', required: true}))
+    const apiToken = flags.token ?? (await input({message: 'App Password:', required: true}))
     const email = flags.email ?? (await input({message: 'Account email:', required: true}))
-    const host = flags.url ?? (await input({message: 'Atlassian instance URL (start with https://):', required: true}))
+    const host = flags.url ?? (await input({message: 'Bitbucket URL (start with https://):', required: true}))
     const configPath = path.join(this.config.configDir, 'config.json')
     const auth = {
       auth: {
@@ -57,7 +57,7 @@ export default class AuthAdd extends Command {
       this.log('Authentication added successfully')
     } else {
       action.stop('✗ failed')
-      this.error('Authentication is invalid. Please check your email, token, and URL.')
+      this.error('Authentication is invalid. Please check your email, app password, and URL.')
     }
 
     return result

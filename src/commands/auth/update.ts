@@ -4,8 +4,8 @@ import {action} from '@oclif/core/ux'
 import {default as fs} from 'fs-extra'
 import {default as path} from 'node:path'
 
-import {ApiResult} from '../../jira/jira-api.js'
-import {clearClients, testConnection} from '../../jira/jira-client.js'
+import {ApiResult} from '../../bitbucket/bitbucket-api.js'
+import {clearClients, testConnection} from '../../bitbucket/bitbucket-client.js'
 
 export default class AuthUpdate extends Command {
   static override args = {}
@@ -14,10 +14,10 @@ export default class AuthUpdate extends Command {
   static override examples = ['<%= config.bin %> <%= command.id %>']
   static override flags = {
     email: Flags.string({char: 'e', description: 'Account email', required: !process.stdout.isTTY}),
-    token: Flags.string({char: 't', description: 'API Token', required: !process.stdout.isTTY}),
+    token: Flags.string({char: 't', description: 'App Password', required: !process.stdout.isTTY}),
     url: Flags.string({
       char: 'u',
-      description: 'Atlassian instance URL (start with https://)',
+      description: 'Bitbucket URL (start with https://)',
       required: !process.stdout.isTTY,
     }),
   }
@@ -41,7 +41,7 @@ export default class AuthUpdate extends Command {
 
     const apiToken =
       flags.token ??
-      (await input({default: config.auth.apiToken, message: 'API Token:', prefill: 'tab', required: true}))
+      (await input({default: config.auth.apiToken, message: 'App Password:', prefill: 'tab', required: true}))
     const email =
       flags.email ??
       (await input({default: config.auth.email, message: 'Account email:', prefill: 'tab', required: true}))
@@ -49,7 +49,7 @@ export default class AuthUpdate extends Command {
       flags.url ??
       (await input({
         default: config.auth.host,
-        message: 'Atlassian instance URL (start with https://):',
+        message: 'Bitbucket URL (start with https://):',
         prefill: 'tab',
         required: true,
       }))
@@ -81,7 +81,7 @@ export default class AuthUpdate extends Command {
       this.log('Authentication updated successfully')
     } else {
       action.stop('✗ failed')
-      this.error('Authentication is invalid. Please check your email, token, and URL.')
+      this.error('Authentication is invalid. Please check your email, app password, and URL.')
     }
 
     return result

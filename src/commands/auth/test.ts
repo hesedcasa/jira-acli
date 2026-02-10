@@ -1,9 +1,9 @@
 import {Command} from '@oclif/core'
 import {action} from '@oclif/core/ux'
 
+import {ApiResult} from '../../bitbucket/bitbucket-api.js'
+import {clearClients, testConnection} from '../../bitbucket/bitbucket-client.js'
 import {readConfig} from '../../config.js'
-import {ApiResult} from '../../jira/jira-api.js'
-import {clearClients, testConnection} from '../../jira/jira-client.js'
 
 export default class AuthTest extends Command {
   static override args = {}
@@ -27,10 +27,10 @@ export default class AuthTest extends Command {
 
     if (result.success) {
       action.stop('✓ successful')
-      this.log('Successful connect to Jira')
+      this.log('Successful connection to Bitbucket')
     } else {
       action.stop('✗ failed')
-      this.error('Failed to connect to Jira.')
+      this.error('Failed to connect to Bitbucket.')
     }
 
     return result

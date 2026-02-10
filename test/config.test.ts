@@ -25,7 +25,7 @@ describe('config', () => {
         auth: {
           apiToken: 'test-token',
           email: 'test@example.com',
-          host: 'https://test.atlassian.net',
+          host: 'https://bitbucket.org',
         },
       }
 
@@ -60,9 +60,9 @@ describe('config', () => {
     it('reads config with all required fields', async () => {
       const testConfig = {
         auth: {
-          apiToken: 'my-api-token',
+          apiToken: 'my-app-password',
           email: 'user@example.com',
-          host: 'https://company.atlassian.net',
+          host: 'https://bitbucket.org',
         },
       }
 
@@ -79,7 +79,7 @@ describe('config', () => {
         auth: {
           apiToken: 'test-token',
           email: 'test@example.com',
-          host: 'https://test.atlassian.net',
+          host: 'https://bitbucket.org',
         },
         extraField: 'some value',
       }

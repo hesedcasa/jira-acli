@@ -1,12 +1,12 @@
 {
-  "name": "jira-acli",
-  "description": "CLI for Jira API interaction",
-  "version": "0.2.0",
+  "name": "bitbucket-acli",
+  "description": "CLI for Bitbucket API interaction",
+  "version": "0.1.0",
   "author": "Hesed",
   "bin": {
-    "jira-acli": "./bin/run.js"
+    "bitbucket-acli": "./bin/run.js"
   },
-  "bugs": "https://github.com/hesedcasa/jira-acli/issues",
+  "bugs": "https://github.com/hesedcasa/bitbucket-acli/issues",
   "dependencies": {
     "@inquirer/prompts": "^8.2.0",
     "@oclif/core": "^4",
@@ -15,10 +15,7 @@
     "@oclif/plugin-update": "^4.7.18",
     "@oclif/plugin-version": "^2",
     "@toon-format/toon": "^2.1.0",
-    "fs-extra": "^11.3.3",
-    "jira.js": "^5.3.0",
-    "marklassian": "^1.1.0",
-    "turndown": "^7.2.2"
+    "fs-extra": "^11.3.3"
   },
   "devDependencies": {
     "@eslint/compat": "^1",
@@ -29,7 +26,6 @@
     "@types/mocha": "^10",
     "@types/node": "^25",
     "@types/sinon": "^21.0.0",
-    "@types/turndown": "^5.0.6",
     "chai": "^6",
     "eslint": "^9",
     "eslint-config-oclif": "^6",
@@ -51,7 +47,7 @@
     "./dist",
     "./oclif.manifest.json"
   ],
-  "homepage": "https://github.com/hesedcasa/jira-acli",
+  "homepage": "https://github.com/hesedcasa/bitbucket-acli",
   "keywords": [
     "oclif"
   ],
@@ -59,8 +55,8 @@
   "main": "dist/index.js",
   "type": "module",
   "oclif": {
-    "bin": "jira-acli",
-    "dirname": "jira-acli",
+    "bin": "bitbucket-acli",
+    "dirname": "bitbucket-acli",
     "commands": "./dist/commands",
     "plugins": [
       "@oclif/plugin-help",
@@ -76,7 +72,7 @@
       }
     }
   },
-  "repository": "hesedcasa/jira-acli",
+  "repository": "hesedcasa/bitbucket-acli",
   "scripts": {
     "build": "shx rm -rf dist tsconfig.tsbuildinfo && tsc -b",
     "lint": "eslint",

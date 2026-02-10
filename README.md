@@ -1,13 +1,11 @@
-# jira-acli
+# bitbucket-acli
 
-CLI for Jira API interaction
+CLI for Bitbucket API interaction
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/jira-acli.svg)](https://npmjs.org/package/jira-acli)
-[![Downloads/week](https://img.shields.io/npm/dw/jira-acli.svg)](https://npmjs.org/package/jira-acli)
 
 <!-- toc -->
-* [jira-acli](#jira-acli)
+* [bitbucket-acli](#bitbucket-acli)
 * [Usage](#usage)
 * [Commands](#commands)
 <!-- tocstop -->
@@ -16,14 +14,14 @@ CLI for Jira API interaction
 
 <!-- usage -->
 ```sh-session
-$ npm install -g jira-acli
-$ jira-acli COMMAND
+$ npm install -g bitbucket-acli
+$ bitbucket-acli COMMAND
 running command...
-$ jira-acli (--version)
-jira-acli/0.2.0 linux-x64 node-v20.20.0
-$ jira-acli --help [COMMAND]
+$ bitbucket-acli (--version)
+bitbucket-acli/0.1.0 linux-x64 node-v22
+$ bitbucket-acli --help [COMMAND]
 USAGE
-  $ jira-acli COMMAND
+  $ bitbucket-acli COMMAND
 ...
 ```
 <!-- usagestop -->
@@ -31,115 +29,40 @@ USAGE
 # Commands
 
 <!-- commands -->
-* [`jira-acli commands`](#jira-acli-commands)
-* [`jira-acli help [COMMAND]`](#jira-acli-help-command)
-* [`jira-acli update [CHANNEL]`](#jira-acli-update-channel)
-* [`jira-acli version`](#jira-acli-version)
 
-## `jira-acli commands`
+## Authentication
 
-List all jira-acli commands.
+- `bitbucket-acli auth add` - Add Atlassian authentication (email + app password)
+- `bitbucket-acli auth test` - Test authentication and connection
+- `bitbucket-acli auth update` - Update existing authentication
 
-```
-USAGE
-  $ jira-acli commands [--json] [-c id|plugin|summary|type... | --tree] [--deprecated] [-x | ] [--hidden]
-    [--no-truncate | ] [--sort id|plugin|summary|type | ]
+## Workspaces
 
-FLAGS
-  -c, --columns=<option>...  Only show provided columns (comma-separated).
-                             <options: id|plugin|summary|type>
-  -x, --extended             Show extra columns.
-      --deprecated           Show deprecated commands.
-      --hidden               Show hidden commands.
-      --no-truncate          Do not truncate output.
-      --sort=<option>        [default: id] Property to sort by.
-                             <options: id|plugin|summary|type>
-      --tree                 Show tree of commands.
+- `bitbucket-acli workspace list` - List all accessible workspaces
+- `bitbucket-acli workspace get WORKSPACE` - Get details of a specific workspace
 
-GLOBAL FLAGS
-  --json  Format output as json.
+## Repositories
 
-DESCRIPTION
-  List all jira-acli commands.
-```
+- `bitbucket-acli repo list WORKSPACE` - List repositories in a workspace
+- `bitbucket-acli repo get WORKSPACE REPO_SLUG` - Get details of a specific repository
+- `bitbucket-acli repo create WORKSPACE REPO_SLUG` - Create a new repository
+- `bitbucket-acli repo delete WORKSPACE REPO_SLUG` - Delete a repository
 
-_See code: [@oclif/plugin-commands](https://github.com/oclif/plugin-commands/blob/v4.1.39/src/commands/commands.ts)_
+## Pull Requests
 
-## `jira-acli help [COMMAND]`
+- `bitbucket-acli pr list WORKSPACE REPO_SLUG` - List pull requests for a repository
+- `bitbucket-acli pr get WORKSPACE REPO_SLUG PR_ID` - Get details of a specific pull request
+- `bitbucket-acli pr create WORKSPACE REPO_SLUG` - Create a new pull request
+- `bitbucket-acli pr update WORKSPACE REPO_SLUG PR_ID` - Update a pull request
+- `bitbucket-acli pr merge WORKSPACE REPO_SLUG PR_ID` - Merge a pull request
+- `bitbucket-acli pr decline WORKSPACE REPO_SLUG PR_ID` - Decline a pull request
+- `bitbucket-acli pr approve WORKSPACE REPO_SLUG PR_ID` - Approve a pull request
+- `bitbucket-acli pr unapprove WORKSPACE REPO_SLUG PR_ID` - Remove approval from a pull request
 
-Display help for jira-acli.
+## Pipelines
 
-```
-USAGE
-  $ jira-acli help [COMMAND...] [-n]
+- `bitbucket-acli pipeline list WORKSPACE REPO_SLUG` - List pipelines for a repository
+- `bitbucket-acli pipeline get WORKSPACE REPO_SLUG PIPELINE_UUID` - Get details of a specific pipeline
+- `bitbucket-acli pipeline trigger WORKSPACE REPO_SLUG` - Trigger a pipeline run
 
-ARGUMENTS
-  [COMMAND...]  Command to show help for.
-
-FLAGS
-  -n, --nested-commands  Include all nested commands in the output.
-
-DESCRIPTION
-  Display help for jira-acli.
-```
-
-_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v6.2.37/src/commands/help.ts)_
-
-## `jira-acli update [CHANNEL]`
-
-update the jira-acli CLI
-
-```
-USAGE
-  $ jira-acli update [CHANNEL] [--force |  | [-a | -v <value> | -i]] [-b ]
-
-FLAGS
-  -a, --available        See available versions.
-  -b, --verbose          Show more details about the available versions.
-  -i, --interactive      Interactively select version to install. This is ignored if a channel is provided.
-  -v, --version=<value>  Install a specific version.
-      --force            Force a re-download of the requested version.
-
-DESCRIPTION
-  update the jira-acli CLI
-
-EXAMPLES
-  Update to the stable channel:
-
-    $ jira-acli update stable
-
-  Update to a specific version:
-
-    $ jira-acli update --version 1.0.0
-
-  Interactively select version:
-
-    $ jira-acli update --interactive
-
-  See available versions:
-
-    $ jira-acli update --available
-```
-
-_See code: [@oclif/plugin-update](https://github.com/oclif/plugin-update/blob/v4.7.19/src/commands/update.ts)_
-
-## `jira-acli version`
-
-```
-USAGE
-  $ jira-acli version [--json] [--verbose]
-
-FLAGS
-  --verbose  Show additional information about the CLI.
-
-GLOBAL FLAGS
-  --json  Format output as json.
-
-FLAG DESCRIPTIONS
-  --verbose  Show additional information about the CLI.
-
-    Additionally shows the architecture, node version, operating system, and versions of plugins that the CLI is using.
-```
-
-_See code: [@oclif/plugin-version](https://github.com/oclif/plugin-version/blob/v2.2.36/src/commands/version.ts)_
 <!-- commandsstop -->

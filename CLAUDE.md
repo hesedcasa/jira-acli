@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**jira-acli** is an Oclif-based CLI tool for interacting with Jira REST API and Jira Agile API. It provides comprehensive access to Jira functionality including issues, projects, boards, sprints, comments, attachments, and worklogs.
+**bitbucket-acli** is an Oclif-based CLI tool for interacting with the Bitbucket Cloud REST API v2. It provides comprehensive access to Bitbucket functionality including repositories, pull requests, pipelines, and workspaces.
 
 ## Development Commands
 
@@ -33,15 +33,11 @@ The project follows a layered architecture with clear separation of concerns:
 ```
 src/
 ├── commands/         # Oclif CLI commands (user-facing)
-├── jira/            # Jira REST API layer
-│   ├── jira-api.ts      # JiraApi class with core API methods
-│   └── jira-client.ts   # Wrapper functions with singleton pattern
-├── agile/           # Jira Agile API layer
-│   ├── agile-api.ts     # AgileApi class for board/sprint operations
-│   └── agile-client.ts  # Wrapper functions with singleton pattern
+├── bitbucket/       # Bitbucket REST API layer
+│   ├── bitbucket-api.ts     # BitbucketApi class with core API methods
+│   └── bitbucket-client.ts  # Wrapper functions with singleton pattern
 ├── config.ts        # Configuration management (auth config)
-├── format.ts        # Output formatting (TOON format)
-└── utils.ts         # Shared utilities (issue processing, defaults)
+└── format.ts        # Output formatting (TOON format)
 ```
 
 ### Key Architectural Patterns
@@ -49,8 +45,8 @@ src/
 **1. Three-Tier Command Pattern:**
 
 - **Commands** (`src/commands/`) - Thin Oclif command wrappers that parse args/flags
-- **Client Layer** (`*-client.ts`) - Functional wrappers with singleton pattern
-- **API Layer** (`*-api.ts`) - Core API classes using `jira.js` library
+- **Client Layer** (`bitbucket-client.ts`) - Functional wrappers with singleton pattern
+- **API Layer** (`bitbucket-api.ts`) - Core API class using native `fetch` for Bitbucket REST API v2
 
 **2. ApiResult Pattern:**
 All API functions return `ApiResult<T>` objects:
@@ -64,10 +60,10 @@ interface ApiResult {
 ```
 
 **3. Singleton Client Pattern:**
-Both `jira-client.ts` and `agile-client.ts` maintain singleton instances of their respective API classes. Commands should call `clearClients()` after use for cleanup.
+`bitbucket-client.ts` maintains a singleton instance of the `BitbucketApi` class. Commands should call `clearClients()` after use for cleanup.
 
-**4. Markdown to ADF Conversion:**
-The project uses `marklassian` to convert Markdown to Jira's Atlassian Document Format (ADF) for comments and descriptions. Commands accept Markdown input which is automatically converted.
+**4. Atlassian Authentication:**
+Uses the same auth pattern as Jira (email + API token / app password + host) since both are Atlassian products. The Bitbucket API uses Basic auth with `email:app_password`.
 
 ## Adding a New Command
 
@@ -77,34 +73,35 @@ The project uses `marklassian` to convert Markdown to Jira's Atlassian Document 
 4. In `run()` method:
    - Parse args/flags
    - Read config with `readConfig(this.config.configDir, this.log)`
-   - Call appropriate client function from `jira-client.ts` or `agile-client.ts`
+   - Call appropriate client function from `bitbucket-client.ts`
    - Call `clearClients()` for cleanup
    - Output with `this.logJson(result)` or `this.log(formatAsToon(result))`
 
-Example pattern from `src/commands/issue/get.ts`:
+Example pattern from `src/commands/repo/get.ts`:
 
 ```typescript
 import {Args, Command, Flags} from '@oclif/core'
 import {readConfig} from '../../config.js'
 import {formatAsToon} from '../../format.js'
-import {clearClients, getIssue} from '../../jira/jira-client.js'
+import {clearClients, getRepository} from '../../bitbucket/bitbucket-client.js'
 
-export default class IssueGet extends Command {
+export default class RepoGet extends Command {
   static override args = {
-    issueId: Args.string({description: 'Issue ID or issue key', required: true}),
+    repoSlug: Args.string({description: 'Repository slug', required: true}),
+    workspace: Args.string({description: 'Workspace slug or UUID', required: true}),
   }
-  static override description = 'Get details of a specific issue'
-  static override examples = ['<%= config.bin %> <%= command.id %> PROJ-123']
+  static override description = 'Get details of a specific repository'
+  static override examples = ['<%= config.bin %> <%= command.id %> my-workspace my-repo']
   static override flags = {
     toon: Flags.boolean({description: 'Format output as toon', required: false}),
   }
 
   public async run(): Promise<void> {
-    const {args, flags} = await this.parse(IssueGet)
-    const config = await readConfig(this.config.configDir, this.log)
+    const {args, flags} = await this.parse(RepoGet)
+    const config = await readConfig(this.config.configDir, this.log.bind(this))
     if (!config) return
 
-    const result = await getIssue(config.auth, args.issueId)
+    const result = await getRepository(config.auth, args.workspace, args.repoSlug)
     clearClients()
 
     if (flags.toon) {
@@ -118,20 +115,20 @@ export default class IssueGet extends Command {
 
 ## Adding New API Functions
 
-1. Add method to `JiraApi` or `AgileApi` class in `*-api.ts`
-2. Export wrapper function in corresponding `*-client.ts` with `initJira` pattern
+1. Add method to `BitbucketApi` class in `bitbucket-api.ts`
+2. Export wrapper function in `bitbucket-client.ts` with `initBitbucket` pattern
 3. Use `ApiResult` return type for consistent error handling
 
 ## Configuration
 
-Authentication config is stored in JSON at `~/.config/jira-acli/config.json` (platform-dependent):
+Authentication config is stored in JSON at `~/.config/bitbucket-acli/config.json` (platform-dependent):
 
 ```json
 {
   "auth": {
     "email": "user@example.com",
-    "apiToken": "token",
-    "host": "https://your-domain.atlassian.net"
+    "apiToken": "app-password",
+    "host": "https://bitbucket.org"
   }
 }
 ```
@@ -152,19 +149,19 @@ Authentication config is stored in JSON at `~/.config/jira-acli/config.json` (pl
 
 ## Dependencies
 
-- **jira.js** v5 - Jira API client library
 - **@oclif/core** - CLI framework
-- **marklassian** - Markdown to ADF conversion
 - **@toon-format/toon** - TOON output format
 - **@inquirer/prompts** - Interactive prompts
+- **fs-extra** - File system utilities
 
 ## Important Notes
 
 - All command files use ES modules (`.js` extensions in imports)
+- Uses native `fetch` (Node.js 18+) for Bitbucket REST API calls — no external HTTP library needed
 - Pre-commit hook runs format and dead code detection
 - Uses `shx` for cross-platform shell commands
 - Node.js >=18.0.0 required
-- Published as npm package `jira-acli`
+- Published as npm package `bitbucket-acli`
 
 ## Commit Message Convention
 
@@ -180,10 +177,10 @@ Authentication config is stored in JSON at `~/.config/jira-acli/config.json` (pl
 **Examples:**
 
 ```
-feat: add list-boards command for agile boards
+feat: add list-repos command for workspaces
 fix: handle connection timeout errors gracefully
 docs: update configuration examples in README
 refactor: extract API formatting into separate module
-test: add integration tests for Jira operations
-chore: update jira.js to latest version
+test: add integration tests for Bitbucket operations
+chore: update dependencies to latest versions
 ```
