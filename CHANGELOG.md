@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.2.0](https://github.com/hesedcasa/jira-acli/compare/v0.1.2...v0.2.0) (2026-02-10)
+
+
+### 🎉 Features
+
+* add auth:test command with improved authentication feedback ([#19](https://github.com/hesedcasa/jira-acli/issues/19)) ([597140d](https://github.com/hesedcasa/jira-acli/commit/597140d27eea38fa6aecd51b21e22fcc6d72df86))
+* implement file upload functionality for issue:attachment command ([#15](https://github.com/hesedcasa/jira-acli/issues/15)) ([16459b1](https://github.com/hesedcasa/jira-acli/commit/16459b12b00ad462f04aa836e655d47a2e84f94b))
+
+
+### 📄 Documentation
+
+* Set up Copilot instructions ([#17](https://github.com/hesedcasa/jira-acli/issues/17)) ([22e6d39](https://github.com/hesedcasa/jira-acli/commit/22e6d39e54688aa1a81d50f801e7ba3c9a12a89c))
+
 ## [0.1.2](https://github.com/hesedcasa/jira-acli/compare/v0.1.1...v0.1.2) (2026-02-04)
 
 
