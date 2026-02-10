@@ -1,10 +1,11 @@
 import {confirm, input} from '@inquirer/prompts'
 import {Command, Flags} from '@oclif/core'
+import {action} from '@oclif/core/ux'
 import {default as fs} from 'fs-extra'
 import {default as path} from 'node:path'
 
 import {ApiResult} from '../../jira/jira-api.js'
-import {testConnection} from '../../jira/jira-client.js'
+import {clearClients, testConnection} from '../../jira/jira-client.js'
 
 export default class AuthUpdate extends Command {
   static override args = {}
@@ -70,10 +71,19 @@ export default class AuthUpdate extends Command {
       mode: 0o600, // owner read/write only
     })
 
+    action.start('Authenticating')
     config = await fs.readJSON(configPath)
     const result = await testConnection(config.auth)
+    clearClients()
 
-    this.log('Jira credential updated successfully')
+    if (result.success) {
+      action.stop('✓ successful')
+      this.log('Authentication updated successfully')
+    } else {
+      action.stop('✗ failed')
+      this.error('Authentication is invalid. Please check your email, token, and URL.')
+    }
+
     return result
   }
 }
