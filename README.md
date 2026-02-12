@@ -20,7 +20,7 @@ $ npm install -g jira-acli
 $ jira-acli COMMAND
 running command...
 $ jira-acli (--version)
-jira-acli/0.2.0 linux-x64 node-v20.20.0
+jira-acli/0.2.1 linux-x64 node-v20.20.0
 $ jira-acli --help [COMMAND]
 USAGE
   $ jira-acli COMMAND
