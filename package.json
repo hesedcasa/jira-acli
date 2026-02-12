@@ -1,7 +1,7 @@
 {
   "name": "jira-acli",
   "description": "CLI for Jira API interaction",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "Hesed",
   "bin": {
     "jira-acli": "./bin/run.js"
@@ -94,9 +94,18 @@
   },
   "types": "dist/index.d.ts",
   "c8": {
-    "include": ["src/**/*.ts"],
-    "exclude": ["src/**/*.d.ts", "test/**/*"],
-    "reporter": ["text", "lcov", "html"],
+    "include": [
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "src/**/*.d.ts",
+      "test/**/*"
+    ],
+    "reporter": [
+      "text",
+      "lcov",
+      "html"
+    ],
     "all": true,
     "check-coverage": true,
     "lines": 50,

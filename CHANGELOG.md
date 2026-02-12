@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/hesedcasa/jira-acli/compare/v0.2.0...v0.2.1) (2026-02-12)
+
+
+### ♻️ Chores
+
+* refactor tests to use mocking and add comprehensive test coverage ([#23](https://github.com/hesedcasa/jira-acli/issues/23)) ([5b321dc](https://github.com/hesedcasa/jira-acli/commit/5b321dc6d2766d8d95237657519aa75f7798ef63))
+
 ## [0.2.0](https://github.com/hesedcasa/jira-acli/compare/v0.1.2...v0.2.0) (2026-02-10)
 
 
