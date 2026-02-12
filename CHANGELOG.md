@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.2](https://github.com/hesedcasa/jira-acli/compare/v0.2.1...v0.2.2) (2026-02-12)
+
+
+### 🛠️ Fixes
+
+* fix formating and release-please workflow ([95d8716](https://github.com/hesedcasa/jira-acli/commit/95d87161b54ce15d7316b67f7d25b6511d886943))
+
 ## [0.2.1](https://github.com/hesedcasa/jira-acli/compare/v0.2.0...v0.2.1) (2026-02-12)
 
 
