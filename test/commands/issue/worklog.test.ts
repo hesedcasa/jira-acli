@@ -45,10 +45,7 @@ describe('issue:worklog', () => {
   })
 
   it('adds worklog successfully with required args', async () => {
-    const command = new IssueWorklog.default(
-      ['TEST-123', '2024-01-01T10:00:00.000+0000', '1h'],
-      createMockConfig(),
-    )
+    const command = new IssueWorklog.default(['TEST-123', '2024-01-01T10:00:00.000+0000', '1h'], createMockConfig())
 
     command.logJson = (output: any) => {
       jsonOutput = output
@@ -106,10 +103,7 @@ describe('issue:worklog', () => {
       },
     })
 
-    const command = new IssueWorklog.default(
-      ['TEST-123', 'invalid-date', '1h'],
-      createMockConfig(),
-    )
+    const command = new IssueWorklog.default(['TEST-123', 'invalid-date', '1h'], createMockConfig())
 
     command.logJson = (output: any) => {
       jsonOutput = output
@@ -132,10 +126,7 @@ describe('issue:worklog', () => {
       },
     })
 
-    const command = new IssueWorklog.default(
-      ['TEST-123', '2024-01-01T10:00:00.000+0000', '1h'],
-      createMockConfig(),
-    )
+    const command = new IssueWorklog.default(['TEST-123', '2024-01-01T10:00:00.000+0000', '1h'], createMockConfig())
 
     let worklogCalled = false
     mockWorklog = async () => {
@@ -163,10 +154,7 @@ describe('issue:worklog', () => {
       },
     })
 
-    const command = new IssueWorklog.default(
-      ['TEST-123', '2024-01-01T10:00:00.000+0000', '1h'],
-      createMockConfig(),
-    )
+    const command = new IssueWorklog.default(['TEST-123', '2024-01-01T10:00:00.000+0000', '1h'], createMockConfig())
     command.logJson = () => {}
 
     await command.run()

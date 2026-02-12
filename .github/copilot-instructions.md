@@ -7,6 +7,7 @@ This file provides guidance to GitHub Copilot when working with code in this rep
 **jira-acli** is an Oclif-based CLI tool for interacting with Jira REST API and Jira Agile API. It provides comprehensive access to Jira functionality including issues, projects, boards, sprints, comments, attachments, and worklogs.
 
 **Tech Stack:**
+
 - TypeScript with ES modules
 - Oclif v4 CLI framework
 - jira.js v5 for Jira API interaction
@@ -59,12 +60,14 @@ src/
 ### Key Architectural Patterns
 
 **1. Three-Tier Command Pattern:**
+
 - **Commands** (`src/commands/`) - Thin Oclif command wrappers that parse args/flags
 - **Client Layer** (`*-client.ts`) - Functional wrappers with singleton pattern
 - **API Layer** (`*-api.ts`) - Core API classes using `jira.js` library
 
 **2. ApiResult Pattern:**
 All API functions return `ApiResult<T>` objects:
+
 ```typescript
 interface ApiResult {
   data?: unknown
@@ -82,12 +85,14 @@ The project uses `marklassian` to convert Markdown to Jira's Atlassian Document 
 ## Code Style and Standards
 
 ### TypeScript
+
 - Use ES modules with `.js` extensions in imports (even for TypeScript files)
 - Enable strict type checking
 - Prefer explicit return types on public methods
 - Use interfaces for data structures
 
 ### Command Structure
+
 When adding a new command, follow this pattern:
 
 ```typescript
@@ -192,6 +197,7 @@ Authentication config is stored in JSON at `~/.config/jira-acli/config.json` (pl
 - `chore:` - Maintenance tasks, dependency updates, build configuration
 
 **Examples:**
+
 ```
 feat: add list-boards command for agile boards
 fix: handle connection timeout errors gracefully

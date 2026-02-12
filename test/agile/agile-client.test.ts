@@ -62,11 +62,7 @@ describe('agile-client', () => {
     })
 
     it('accepts optional parameters', async () => {
-      mockAgileApiInstance.getAllBoards = async (
-        projectKeyOrId?: string,
-        maxResults?: number,
-        startAt?: number,
-      ) => {
+      mockAgileApiInstance.getAllBoards = async (projectKeyOrId?: string, maxResults?: number, startAt?: number) => {
         expect(projectKeyOrId).to.equal('TEST')
         expect(maxResults).to.equal(50)
         expect(startAt).to.equal(0)

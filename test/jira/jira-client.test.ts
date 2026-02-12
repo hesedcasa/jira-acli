@@ -348,13 +348,7 @@ describe('jira-client', () => {
     })
 
     it('accepts optional comment parameter', async () => {
-      const result = await jiraClient.worklog(
-        mockConfig,
-        'TEST-123',
-        '2024-01-01T10:00:00.000+0000',
-        '1h',
-        'Work done',
-      )
+      const result = await jiraClient.worklog(mockConfig, 'TEST-123', '2024-01-01T10:00:00.000+0000', '1h', 'Work done')
 
       expect(result.success).to.be.true
     })

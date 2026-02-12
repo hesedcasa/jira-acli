@@ -59,10 +59,7 @@ describe('issue:download-attachment', () => {
   })
 
   it('downloads attachment successfully with output path', async () => {
-    const command = new IssueDownloadAttachment.default(
-      ['123', 'TEST-123', '/tmp/custom.jpg'],
-      createMockConfig(),
-    )
+    const command = new IssueDownloadAttachment.default(['123', 'TEST-123', '/tmp/custom.jpg'], createMockConfig())
 
     command.logJson = (output: any) => {
       jsonOutput = output
@@ -75,10 +72,7 @@ describe('issue:download-attachment', () => {
   })
 
   it('formats output as TOON when --toon flag is provided', async () => {
-    const command = new IssueDownloadAttachment.default(
-      ['123', 'TEST-123', '--toon'],
-      createMockConfig(),
-    )
+    const command = new IssueDownloadAttachment.default(['123', 'TEST-123', '--toon'], createMockConfig())
 
     command.log = (output: string) => {
       logOutput.push(output)
