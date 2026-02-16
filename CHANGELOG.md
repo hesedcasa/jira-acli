@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.3](https://github.com/hesedcasa/jira-acli/compare/v0.2.2...v0.2.3) (2026-02-16)
+
+
+### ♻️ Chores
+
+* reorder command arguments to place issueId first ([#26](https://github.com/hesedcasa/jira-acli/issues/26)) ([0b5524e](https://github.com/hesedcasa/jira-acli/commit/0b5524ea09b13397703a22a6613971f5ffb583a1))
+
 ## [0.2.2](https://github.com/hesedcasa/jira-acli/compare/v0.2.1...v0.2.2) (2026-02-12)
 
 
