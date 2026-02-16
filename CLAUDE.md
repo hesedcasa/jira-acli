@@ -71,12 +71,12 @@ The project uses `marklassian` to convert Markdown to Jira's Atlassian Document 
 
 ## Adding a New Command
 
-1. Create command file in `src/commands/<category>/<name>.ts`
+1. Create command file in `src/commands/jira/<category>/<name>.ts`
 2. Extend `Command` from `@oclif/core`
 3. Define static `args`, `flags`, `description`, and `examples`
 4. In `run()` method:
    - Parse args/flags
-   - Read config with `readConfig(this.config.configDir, this.log)`
+   - Read config with `readConfig(this.config.configDir, this.log.bind(this))`
    - Call appropriate client function from `jira-client.ts` or `agile-client.ts`
    - Call `clearClients()` for cleanup
    - Output with `this.logJson(result)` or `this.log(formatAsToon(result))`
@@ -92,13 +92,13 @@ static override args = {
 /* eslint-enable perfectionist/sort-objects */
 ```
 
-Example pattern from `src/commands/issue/get.ts`:
+Example pattern from `src/commands/jira/issue/get.ts`:
 
 ```typescript
 import {Args, Command, Flags} from '@oclif/core'
-import {readConfig} from '../../config.js'
-import {formatAsToon} from '../../format.js'
-import {clearClients, getIssue} from '../../jira/jira-client.js'
+import {readConfig} from '../../../config.js'
+import {formatAsToon} from '../../../format.js'
+import {clearClients, getIssue} from '../../../jira/jira-client.js'
 
 export default class IssueGet extends Command {
   static override args = {
