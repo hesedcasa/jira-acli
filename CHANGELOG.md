@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.4](https://github.com/hesedcasa/jira-acli/compare/v0.2.3...v0.2.4) (2026-02-16)
+
+
+### ♻️ Chores
+
+* reorganize commands under jira/ namespace ([#28](https://github.com/hesedcasa/jira-acli/issues/28)) ([2a0eb56](https://github.com/hesedcasa/jira-acli/commit/2a0eb565bd448e15691066b581a3be24e5bcf96b))
+
 ## [0.2.3](https://github.com/hesedcasa/jira-acli/compare/v0.2.2...v0.2.3) (2026-02-16)
 
 
