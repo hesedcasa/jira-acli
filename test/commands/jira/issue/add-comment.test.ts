@@ -32,7 +32,7 @@ describe('issue:add-comment', () => {
 
     mockClearClients = () => {}
 
-    IssueAddComment = await esmock('../../../../src/commands/jira/issue/add-comment.js', {
+    IssueAddComment = await esmock('../../../../src/commands/jira/issue/comment.js', {
       '../../../../src/config.js': {readConfig: mockReadConfig},
       '../../../../src/jira/jira-client.js': {
         addComment: mockAddComment,
@@ -73,7 +73,7 @@ describe('issue:add-comment', () => {
       success: false,
     })
 
-    IssueAddComment = await esmock('../../../../src/commands/jira/issue/add-comment.js', {
+    IssueAddComment = await esmock('../../../../src/commands/jira/issue/comment.js', {
       '../../../../src/config.js': {readConfig: mockReadConfig},
       '../../../../src/jira/jira-client.js': {
         addComment: mockAddComment,
@@ -96,7 +96,7 @@ describe('issue:add-comment', () => {
   it('exits early when config is not available', async () => {
     mockReadConfig = async () => null
 
-    IssueAddComment = await esmock('../../../../src/commands/jira/issue/add-comment.js', {
+    IssueAddComment = await esmock('../../../../src/commands/jira/issue/comment.js', {
       '../../../../src/config.js': {readConfig: mockReadConfig},
       '../../../../src/jira/jira-client.js': {
         addComment: mockAddComment,
@@ -124,7 +124,7 @@ describe('issue:add-comment', () => {
       clearClientsCalled = true
     }
 
-    IssueAddComment = await esmock('../../../../src/commands/jira/issue/add-comment.js', {
+    IssueAddComment = await esmock('../../../../src/commands/jira/issue/comment.js', {
       '../../../../src/config.js': {readConfig: mockReadConfig},
       '../../../../src/jira/jira-client.js': {
         addComment: mockAddComment,

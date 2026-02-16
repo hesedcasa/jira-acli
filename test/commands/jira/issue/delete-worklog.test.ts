@@ -30,7 +30,7 @@ describe('issue:delete-worklog', () => {
 
     mockClearClients = () => {}
 
-    IssueDeleteWorklog = await esmock('../../../../src/commands/jira/issue/delete-worklog.js', {
+    IssueDeleteWorklog = await esmock('../../../../src/commands/jira/issue/worklog-delete.js', {
       '../../../../src/config.js': {readConfig: mockReadConfig},
       '../../../../src/jira/jira-client.js': {
         clearClients: mockClearClients,
@@ -58,7 +58,7 @@ describe('issue:delete-worklog', () => {
       success: false,
     })
 
-    IssueDeleteWorklog = await esmock('../../../../src/commands/jira/issue/delete-worklog.js', {
+    IssueDeleteWorklog = await esmock('../../../../src/commands/jira/issue/worklog-delete.js', {
       '../../../../src/config.js': {readConfig: mockReadConfig},
       '../../../../src/jira/jira-client.js': {
         clearClients: mockClearClients,
@@ -81,7 +81,7 @@ describe('issue:delete-worklog', () => {
   it('exits early when config is not available', async () => {
     mockReadConfig = async () => null
 
-    IssueDeleteWorklog = await esmock('../../../../src/commands/jira/issue/delete-worklog.js', {
+    IssueDeleteWorklog = await esmock('../../../../src/commands/jira/issue/worklog-delete.js', {
       '../../../../src/config.js': {readConfig: mockReadConfig},
       '../../../../src/jira/jira-client.js': {
         clearClients: mockClearClients,
@@ -109,7 +109,7 @@ describe('issue:delete-worklog', () => {
       clearClientsCalled = true
     }
 
-    IssueDeleteWorklog = await esmock('../../../../src/commands/jira/issue/delete-worklog.js', {
+    IssueDeleteWorklog = await esmock('../../../../src/commands/jira/issue/worklog-delete.js', {
       '../../../../src/config.js': {readConfig: mockReadConfig},
       '../../../../src/jira/jira-client.js': {
         clearClients: mockClearClients,

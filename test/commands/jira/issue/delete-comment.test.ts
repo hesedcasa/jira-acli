@@ -30,7 +30,7 @@ describe('issue:delete-comment', () => {
 
     mockClearClients = () => {}
 
-    IssueDeleteComment = await esmock('../../../../src/commands/jira/issue/delete-comment.js', {
+    IssueDeleteComment = await esmock('../../../../src/commands/jira/issue/comment-delete.js', {
       '../../../../src/config.js': {readConfig: mockReadConfig},
       '../../../../src/jira/jira-client.js': {
         clearClients: mockClearClients,
@@ -58,7 +58,7 @@ describe('issue:delete-comment', () => {
       success: false,
     })
 
-    IssueDeleteComment = await esmock('../../../../src/commands/jira/issue/delete-comment.js', {
+    IssueDeleteComment = await esmock('../../../../src/commands/jira/issue/comment-delete.js', {
       '../../../../src/config.js': {readConfig: mockReadConfig},
       '../../../../src/jira/jira-client.js': {
         clearClients: mockClearClients,
@@ -81,7 +81,7 @@ describe('issue:delete-comment', () => {
   it('exits early when config is not available', async () => {
     mockReadConfig = async () => null
 
-    IssueDeleteComment = await esmock('../../../../src/commands/jira/issue/delete-comment.js', {
+    IssueDeleteComment = await esmock('../../../../src/commands/jira/issue/comment-delete.js', {
       '../../../../src/config.js': {readConfig: mockReadConfig},
       '../../../../src/jira/jira-client.js': {
         clearClients: mockClearClients,
@@ -109,7 +109,7 @@ describe('issue:delete-comment', () => {
       clearClientsCalled = true
     }
 
-    IssueDeleteComment = await esmock('../../../../src/commands/jira/issue/delete-comment.js', {
+    IssueDeleteComment = await esmock('../../../../src/commands/jira/issue/comment-delete.js', {
       '../../../../src/config.js': {readConfig: mockReadConfig},
       '../../../../src/jira/jira-client.js': {
         clearClients: mockClearClients,

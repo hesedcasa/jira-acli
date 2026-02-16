@@ -38,7 +38,7 @@ describe('issue:get-transitions', () => {
 
     mockClearClients = () => {}
 
-    IssueGetTransitions = await esmock('../../../../src/commands/jira/issue/get-transitions.js', {
+    IssueGetTransitions = await esmock('../../../../src/commands/jira/issue/transitions.js', {
       '../../../../src/config.js': {readConfig: mockReadConfig},
       '../../../../src/jira/jira-client.js': {
         clearClients: mockClearClients,
@@ -80,7 +80,7 @@ describe('issue:get-transitions', () => {
       success: false,
     })
 
-    IssueGetTransitions = await esmock('../../../../src/commands/jira/issue/get-transitions.js', {
+    IssueGetTransitions = await esmock('../../../../src/commands/jira/issue/transitions.js', {
       '../../../../src/config.js': {readConfig: mockReadConfig},
       '../../../../src/jira/jira-client.js': {
         clearClients: mockClearClients,
@@ -103,7 +103,7 @@ describe('issue:get-transitions', () => {
   it('exits early when config is not available', async () => {
     mockReadConfig = async () => null
 
-    IssueGetTransitions = await esmock('../../../../src/commands/jira/issue/get-transitions.js', {
+    IssueGetTransitions = await esmock('../../../../src/commands/jira/issue/transitions.js', {
       '../../../../src/config.js': {readConfig: mockReadConfig},
       '../../../../src/jira/jira-client.js': {
         clearClients: mockClearClients,
@@ -131,7 +131,7 @@ describe('issue:get-transitions', () => {
       clearClientsCalled = true
     }
 
-    IssueGetTransitions = await esmock('../../../../src/commands/jira/issue/get-transitions.js', {
+    IssueGetTransitions = await esmock('../../../../src/commands/jira/issue/transitions.js', {
       '../../../../src/config.js': {readConfig: mockReadConfig},
       '../../../../src/jira/jira-client.js': {
         clearClients: mockClearClients,

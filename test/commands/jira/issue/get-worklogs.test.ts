@@ -45,7 +45,7 @@ describe('issue:get-worklogs', () => {
 
     mockClearClients = () => {}
 
-    IssueGetWorklogs = await esmock('../../../../src/commands/jira/issue/get-worklogs.js', {
+    IssueGetWorklogs = await esmock('../../../../src/commands/jira/issue/worklogs.js', {
       '../../../../src/config.js': {readConfig: mockReadConfig},
       '../../../../src/jira/jira-client.js': {
         clearClients: mockClearClients,
@@ -113,7 +113,7 @@ describe('issue:get-worklogs', () => {
       success: false,
     })
 
-    IssueGetWorklogs = await esmock('../../../../src/commands/jira/issue/get-worklogs.js', {
+    IssueGetWorklogs = await esmock('../../../../src/commands/jira/issue/worklogs.js', {
       '../../../../src/config.js': {readConfig: mockReadConfig},
       '../../../../src/jira/jira-client.js': {
         clearClients: mockClearClients,
@@ -136,7 +136,7 @@ describe('issue:get-worklogs', () => {
   it('exits early when config is not available', async () => {
     mockReadConfig = async () => null
 
-    IssueGetWorklogs = await esmock('../../../../src/commands/jira/issue/get-worklogs.js', {
+    IssueGetWorklogs = await esmock('../../../../src/commands/jira/issue/worklogs.js', {
       '../../../../src/config.js': {readConfig: mockReadConfig},
       '../../../../src/jira/jira-client.js': {
         clearClients: mockClearClients,
@@ -164,7 +164,7 @@ describe('issue:get-worklogs', () => {
       clearClientsCalled = true
     }
 
-    IssueGetWorklogs = await esmock('../../../../src/commands/jira/issue/get-worklogs.js', {
+    IssueGetWorklogs = await esmock('../../../../src/commands/jira/issue/worklogs.js', {
       '../../../../src/config.js': {readConfig: mockReadConfig},
       '../../../../src/jira/jira-client.js': {
         clearClients: mockClearClients,

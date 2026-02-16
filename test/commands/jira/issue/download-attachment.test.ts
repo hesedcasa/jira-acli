@@ -35,7 +35,7 @@ describe('issue:download-attachment', () => {
 
     mockClearClients = () => {}
 
-    IssueDownloadAttachment = await esmock('../../../../src/commands/jira/issue/download-attachment.js', {
+    IssueDownloadAttachment = await esmock('../../../../src/commands/jira/issue/attachment-download.js', {
       '../../../../src/config.js': {readConfig: mockReadConfig},
       '../../../../src/jira/jira-client.js': {
         clearClients: mockClearClients,
@@ -89,7 +89,7 @@ describe('issue:download-attachment', () => {
       success: false,
     })
 
-    IssueDownloadAttachment = await esmock('../../../../src/commands/jira/issue/download-attachment.js', {
+    IssueDownloadAttachment = await esmock('../../../../src/commands/jira/issue/attachment-download.js', {
       '../../../../src/config.js': {readConfig: mockReadConfig},
       '../../../../src/jira/jira-client.js': {
         clearClients: mockClearClients,
@@ -112,7 +112,7 @@ describe('issue:download-attachment', () => {
   it('exits early when config is not available', async () => {
     mockReadConfig = async () => null
 
-    IssueDownloadAttachment = await esmock('../../../../src/commands/jira/issue/download-attachment.js', {
+    IssueDownloadAttachment = await esmock('../../../../src/commands/jira/issue/attachment-download.js', {
       '../../../../src/config.js': {readConfig: mockReadConfig},
       '../../../../src/jira/jira-client.js': {
         clearClients: mockClearClients,
@@ -140,7 +140,7 @@ describe('issue:download-attachment', () => {
       clearClientsCalled = true
     }
 
-    IssueDownloadAttachment = await esmock('../../../../src/commands/jira/issue/download-attachment.js', {
+    IssueDownloadAttachment = await esmock('../../../../src/commands/jira/issue/attachment-download.js', {
       '../../../../src/config.js': {readConfig: mockReadConfig},
       '../../../../src/jira/jira-client.js': {
         clearClients: mockClearClients,
