@@ -4,10 +4,12 @@ import {readConfig} from '../../config.js'
 import {assignIssue, clearClients} from '../../jira/jira-client.js'
 
 export default class IssueAssign extends Command {
+  /* eslint-disable perfectionist/sort-objects */
   static override args = {
-    accountId: Args.string({description: 'Account ID of the user', required: true}),
     issueId: Args.string({description: 'Issue ID or issue key', required: true}),
+    accountId: Args.string({description: 'Account ID of the user', required: true}),
   }
+  /* eslint-enable perfectionist/sort-objects */
   static override description = 'Assigns an issue to a user'
   static override examples = ['<%= config.bin %> <%= command.id %> 5b10ac8d82e05b22cc7d4ef5 PROJ-123']
   static override flags = {}

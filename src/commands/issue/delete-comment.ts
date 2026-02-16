@@ -4,10 +4,12 @@ import {readConfig} from '../../config.js'
 import {clearClients, deleteComment} from '../../jira/jira-client.js'
 
 export default class IssueDeleteComment extends Command {
+  /* eslint-disable perfectionist/sort-objects */
   static override args = {
-    id: Args.string({description: 'Comment ID to delete', required: true}),
     issueId: Args.string({description: 'Issue ID or issue key', required: true}),
+    id: Args.string({description: 'Comment ID to delete', required: true}),
   }
+  /* eslint-enable perfectionist/sort-objects */
   static override description = 'Delete a comment'
   static override examples = ['<%= config.bin %> <%= command.id %> 123 PROJ-123']
   static override flags = {}

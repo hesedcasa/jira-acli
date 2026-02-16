@@ -40,7 +40,7 @@ describe('issue:delete-worklog', () => {
   })
 
   it('deletes worklog successfully', async () => {
-    const command = new IssueDeleteWorklog.default(['10001', 'TEST-123'], createMockConfig())
+    const command = new IssueDeleteWorklog.default(['TEST-123', '10001'], createMockConfig())
 
     command.logJson = (output: any) => {
       jsonOutput = output
@@ -66,7 +66,7 @@ describe('issue:delete-worklog', () => {
       },
     })
 
-    const command = new IssueDeleteWorklog.default(['99999', 'TEST-123'], createMockConfig())
+    const command = new IssueDeleteWorklog.default(['TEST-123', '99999'], createMockConfig())
 
     command.logJson = (output: any) => {
       jsonOutput = output
@@ -89,7 +89,7 @@ describe('issue:delete-worklog', () => {
       },
     })
 
-    const command = new IssueDeleteWorklog.default(['10001', 'TEST-123'], createMockConfig())
+    const command = new IssueDeleteWorklog.default(['TEST-123', '10001'], createMockConfig())
 
     let deleteWorklogCalled = false
     mockDeleteWorklog = async () => {
@@ -117,7 +117,7 @@ describe('issue:delete-worklog', () => {
       },
     })
 
-    const command = new IssueDeleteWorklog.default(['10001', 'TEST-123'], createMockConfig())
+    const command = new IssueDeleteWorklog.default(['TEST-123', '10001'], createMockConfig())
     command.logJson = () => {}
 
     await command.run()

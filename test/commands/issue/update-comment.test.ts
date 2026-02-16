@@ -45,7 +45,7 @@ describe('issue:update-comment', () => {
   })
 
   it('updates comment successfully', async () => {
-    const command = new IssueUpdateComment.default(['Updated text', '10001', 'TEST-123'], createMockConfig())
+    const command = new IssueUpdateComment.default(['TEST-123', '10001', 'Updated text'], createMockConfig())
 
     command.logJson = (output: any) => {
       jsonOutput = output
@@ -59,7 +59,7 @@ describe('issue:update-comment', () => {
   })
 
   it('formats output as TOON when --toon flag is provided', async () => {
-    const command = new IssueUpdateComment.default(['Updated text', '10001', 'TEST-123', '--toon'], createMockConfig())
+    const command = new IssueUpdateComment.default(['TEST-123', '10001', 'Updated text', '--toon'], createMockConfig())
 
     command.log = (output: string) => {
       logOutput.push(output)
@@ -84,7 +84,7 @@ describe('issue:update-comment', () => {
       },
     })
 
-    const command = new IssueUpdateComment.default(['Updated text', '99999', 'TEST-123'], createMockConfig())
+    const command = new IssueUpdateComment.default(['TEST-123', '99999', 'Updated text'], createMockConfig())
 
     command.logJson = (output: any) => {
       jsonOutput = output
@@ -107,7 +107,7 @@ describe('issue:update-comment', () => {
       },
     })
 
-    const command = new IssueUpdateComment.default(['Updated text', '10001', 'TEST-123'], createMockConfig())
+    const command = new IssueUpdateComment.default(['TEST-123', '10001', 'Updated text'], createMockConfig())
 
     let updateCommentCalled = false
     mockUpdateComment = async () => {
@@ -135,7 +135,7 @@ describe('issue:update-comment', () => {
       },
     })
 
-    const command = new IssueUpdateComment.default(['Updated text', '10001', 'TEST-123'], createMockConfig())
+    const command = new IssueUpdateComment.default(['TEST-123', '10001', 'Updated text'], createMockConfig())
     command.logJson = () => {}
 
     await command.run()

@@ -6,10 +6,12 @@ import {formatAsToon} from '../../format.js'
 import {addAttachment, clearClients} from '../../jira/jira-client.js'
 
 export default class IssueAttachment extends Command {
+  /* eslint-disable perfectionist/sort-objects */
   static override args = {
-    file: Args.string({description: 'Path to the file to upload', required: true}),
     issueId: Args.string({description: 'Issue ID or issue key', required: true}),
+    file: Args.string({description: 'Path to the file to upload', required: true}),
   }
+  /* eslint-enable perfectionist/sort-objects */
   static override description = 'Add an attachment to a Jira issue'
   static override examples = ['<%= config.bin %> <%= command.id %> ./document.pdf PROJ-123']
   static override flags = {

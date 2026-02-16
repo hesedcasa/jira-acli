@@ -5,11 +5,13 @@ import {formatAsToon} from '../../format.js'
 import {clearClients, updateComment} from '../../jira/jira-client.js'
 
 export default class IssueUpdateComment extends Command {
+  /* eslint-disable perfectionist/sort-objects */
   static override args = {
-    body: Args.string({description: 'Comment text content', required: true}),
-    id: Args.string({description: 'Comment ID to delete', required: true}),
     issueId: Args.string({description: 'Issue ID or issue key', required: true}),
+    id: Args.string({description: 'Comment ID to delete', required: true}),
+    body: Args.string({description: 'Comment text content', required: true}),
   }
+  /* eslint-enable perfectionist/sort-objects */
   static override description = 'Update a comment'
   static override examples = [
     '<%= config.bin %> <%= command.id %> "\n# Header\n## Sub-header\n- Item 1\n- Item 2\n```bash\nls -a\n```" 123 PROJ-123',

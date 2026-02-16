@@ -81,6 +81,17 @@ The project uses `marklassian` to convert Markdown to Jira's Atlassian Document 
    - Call `clearClients()` for cleanup
    - Output with `this.logJson(result)` or `this.log(formatAsToon(result))`
 
+**Argument ordering convention:** `issueId` must always be the first positional argument. The `eslint-config-oclif` enforces `perfectionist/sort-objects`, so when the issue-first ordering conflicts with alphabetical, wrap the `args` block with eslint-disable comments:
+
+```typescript
+/* eslint-disable perfectionist/sort-objects */
+static override args = {
+  issueId: Args.string({description: 'Issue ID or issue key', required: true}),
+  body: Args.string({description: 'Comment text content', required: true}),
+}
+/* eslint-enable perfectionist/sort-objects */
+```
+
 Example pattern from `src/commands/issue/get.ts`:
 
 ```typescript
@@ -143,6 +154,13 @@ Authentication config is stored in JSON at `~/.config/jira-acli/config.json` (pl
 - `esmock` for mocking dependencies
 - Tests use `ts-node` for TypeScript execution (see `.mocharc.json`)
 - 60-second timeout for all tests
+- Use `createMockConfig()` from `test/helpers/config-mock.ts` to mock oclif's `Config` object
+- When instantiating a command in tests, **the arg array order must match the `static args` definition order** exactly, since oclif assigns positional args by position:
+  ```typescript
+  // args = { issueId, id, body }
+  const command = new IssueUpdateComment.default(['TEST-123', '10001', 'Updated text'], createMockConfig())
+  ```
+- Use `/* eslint-disable max-params */` at the top of test files (or above individual functions) when mocked functions require more than 4 parameters
 
 ## Output Formatting
 

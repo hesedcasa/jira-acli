@@ -5,10 +5,12 @@ import {formatAsToon} from '../../format.js'
 import {addComment, clearClients} from '../../jira/jira-client.js'
 
 export default class IssueAddComment extends Command {
+  /* eslint-disable perfectionist/sort-objects */
   static override args = {
-    body: Args.string({description: 'Comment text content', required: true}),
     issueId: Args.string({description: 'Issue ID or issue key', required: true}),
+    body: Args.string({description: 'Comment text content', required: true}),
   }
+  /* eslint-enable perfectionist/sort-objects */
   static override description = 'Add a comment to an issue'
   static override examples = [
     '<%= config.bin %> <%= command.id %> "\n# Header\n## Sub-header\n- Item 1\n- Item 2\n```bash\nls -a\n```" PROJ-123',
