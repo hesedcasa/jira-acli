@@ -5,11 +5,13 @@ import {formatAsToon} from '../../format.js'
 import {clearClients, downloadAttachment} from '../../jira/jira-client.js'
 
 export default class IssueDownloadAttachment extends Command {
+  /* eslint-disable perfectionist/sort-objects */
   static override args = {
-    attachmentId: Args.string({description: 'Attachment ID', required: true}),
     issueId: Args.string({description: 'Issue ID or issue key', required: true}),
+    attachmentId: Args.string({description: 'Attachment ID', required: true}),
     outputPath: Args.string({description: 'Output file path', required: false}),
   }
+  /* eslint-enable perfectionist/sort-objects */
   static override description = 'Download attachment from an issue'
   static override examples = [
     '<%= config.bin %> <%= command.id %> 123 PROJ-123',

@@ -40,7 +40,7 @@ describe('issue:delete-comment', () => {
   })
 
   it('deletes comment successfully', async () => {
-    const command = new IssueDeleteComment.default(['10001', 'TEST-123'], createMockConfig())
+    const command = new IssueDeleteComment.default(['TEST-123', '10001'], createMockConfig())
 
     command.logJson = (output: any) => {
       jsonOutput = output
@@ -66,7 +66,7 @@ describe('issue:delete-comment', () => {
       },
     })
 
-    const command = new IssueDeleteComment.default(['99999', 'TEST-123'], createMockConfig())
+    const command = new IssueDeleteComment.default(['TEST-123', '99999'], createMockConfig())
 
     command.logJson = (output: any) => {
       jsonOutput = output
@@ -89,7 +89,7 @@ describe('issue:delete-comment', () => {
       },
     })
 
-    const command = new IssueDeleteComment.default(['10001', 'TEST-123'], createMockConfig())
+    const command = new IssueDeleteComment.default(['TEST-123', '10001'], createMockConfig())
 
     let deleteCommentCalled = false
     mockDeleteComment = async () => {
@@ -117,7 +117,7 @@ describe('issue:delete-comment', () => {
       },
     })
 
-    const command = new IssueDeleteComment.default(['10001', 'TEST-123'], createMockConfig())
+    const command = new IssueDeleteComment.default(['TEST-123', '10001'], createMockConfig())
     command.logJson = () => {}
 
     await command.run()

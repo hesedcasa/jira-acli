@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable new-cap */
+/* eslint-disable max-params */
 import {expect} from 'chai'
 import esmock from 'esmock'
 
