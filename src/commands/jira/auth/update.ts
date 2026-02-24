@@ -24,7 +24,7 @@ export default class AuthUpdate extends Command {
 
   public async run(): Promise<ApiResult | void> {
     const {flags} = await this.parse(AuthUpdate)
-    const configPath = path.join(this.config.configDir, 'config.json')
+    const configPath = path.join(this.config.configDir, 'jira-config.json')
     let config
     try {
       config = await fs.readJSON(configPath)

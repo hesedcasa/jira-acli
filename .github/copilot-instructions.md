@@ -173,7 +173,7 @@ export default class IssueGet extends Command {
 
 ## Configuration
 
-Authentication config is stored in JSON at `~/.config/jira-acli/config.json` (platform-dependent):
+Authentication config is stored in JSON at `~/.config/jira-acli/jira-config.json` (platform-dependent):
 
 ```json
 {
