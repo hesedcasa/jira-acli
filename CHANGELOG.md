@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.5](https://github.com/hesedcasa/jira-acli/compare/v0.2.4...v0.2.5) (2026-02-24)
+
+
+### 🛠️ Fixes
+
+* rename config file from config.json to jira-config.json ([#33](https://github.com/hesedcasa/jira-acli/issues/33)) ([a638089](https://github.com/hesedcasa/jira-acli/commit/a638089212f825f543380df84b296d51c5c5aad8))
+
 ## [0.2.4](https://github.com/hesedcasa/jira-acli/compare/v0.2.3...v0.2.4) (2026-02-16)
 
 
